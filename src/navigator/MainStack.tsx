@@ -8,8 +8,8 @@ const MainStack = createStackNavigator();
 export default function MainStackScreen() {
   return (
     <MainStack.Navigator screenOptions={screenOptions}>
-      {/* <MainStack.Screen name="Onboarding" component={OnboardingScreen} /> */}
-      <MainStack.Screen name="MainTab" component={MainBottomTab} />
+      <MainStack.Screen name="Onboarding" component={OnboardingScreen} />
+      {/* <MainStack.Screen name="MainTab" component={MainBottomTab} /> */}
     </MainStack.Navigator>
   );
 }

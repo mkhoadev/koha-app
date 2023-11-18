@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View } from "react-native";
-import { HeathIcon, HomeIcon, StatisticIcon, UserIcon } from "../../assets/svgs/icon";
+import { HeathIcon, HomeIcon, PlusMenuIcon, StatisticIcon, UserIcon } from "../../assets/svgs/icon";
+import CreateScreen from "../screens/Create";
 import HeathScreen from "../screens/Heath";
 import HomeScreen from "../screens/Home";
 import BidList from "../screens/Home/BidList";
@@ -17,9 +17,10 @@ export default function MainBottomTab() {
   return (
     <MainTab.Navigator screenOptions={combinedScreenOptions}>
       <MainTab.Screen name="Home" component={BidStackScreen} />
-      <MainTab.Screen name="User" component={UserScreen} />
-      <MainTab.Screen name="Heath" component={HeathScreen} />
       <MainTab.Screen name="Statistic" component={Statistic} />
+      <MainTab.Screen name="Create" component={CreateScreen} />
+      <MainTab.Screen name="Heath" component={HeathScreen} />
+      <MainTab.Screen name="User" component={UserScreen} />
     </MainTab.Navigator>
   );
 }
@@ -48,21 +49,31 @@ const screenOptions = ({ route }: { route: any }) => {
         iconTab = <HeathIcon color={focused && "#8FFF00"} />;
       } else if (route.name === "Statistic") {
         iconTab = <StatisticIcon color={focused && "#8FFF00"} />;
+      } else if (route.name === "Create") {
+        iconTab = <PlusMenuIcon />;
       } else {
         return null;
       }
 
       return (
-        <View style={styles.icon}>
+        <View>
           {focused && (
             <LinearGradient
               colors={["transparent", "#8FFF00", "transparent"]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
-              style={styles.iconActive}
+              style={[styles.iconActive, { display: route.name === "Create" ? "none" : "flex" }]}
             />
           )}
-          {iconTab}
+
+          <View
+            style={[
+              styles.icon,
+              { transform: [{ translateY: route.name === "Create" ? -35 : 0 }] },
+            ]}
+          >
+            {iconTab}
+          </View>
         </View>
       );
     },

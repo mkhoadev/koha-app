@@ -227,3 +227,41 @@ export const Gradient = () => (
     <Defs></Defs>
   </Svg>
 );
+
+export const PlusMenuIcon = () => (
+  <Svg xmlns="http://www.w3.org/2000/svg" width={83} height={83} fill="none">
+    <G filter="url(#a)">
+      <Circle cx={41.5} cy={38.5} r={31.5} fill="url(#b)" />
+      <Path
+        fill="#000"
+        fillRule="evenodd"
+        d="M41.5 26.996c.907 0 1.643.736 1.643 1.643v8.217h8.217a1.643 1.643 0 1 1 0 3.288h-8.217v8.217a1.643 1.643 0 1 1-3.287 0v-8.217h-8.217a1.643 1.643 0 1 1 0-3.288h8.217V28.64c0-.907.736-1.643 1.643-1.643Z"
+        clipRule="evenodd"
+      />
+    </G>
+    <Defs>
+      <LinearGradient
+        id="b"
+        x1={9.837}
+        x2={73.171}
+        y1={6.832}
+        y2={70.166}
+        gradientUnits="userSpaceOnUse"
+      >
+        <Stop stopColor="#8FFF00" />
+        <Stop offset={1} stopColor="#050A00" />
+      </LinearGradient>
+    </Defs>
+  </Svg>
+);
+
+export const SettingWhiteIcon = () => (
+  <Svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none">
+    <Path
+      fill="#fff"
+      fillRule="evenodd"
+      d="M13.787 3.805c-.455-1.874-3.12-1.874-3.575 0A1.839 1.839 0 0 1 7.468 4.94c-1.646-1.003-3.53.881-2.527 2.527a1.839 1.839 0 0 1-1.136 2.744c-1.874.455-1.874 3.12 0 3.575A1.839 1.839 0 0 1 4.94 16.53c-1.003 1.647.881 3.53 2.527 2.528a1.839 1.839 0 0 1 2.744 1.136c.455 1.874 3.12 1.874 3.575 0a1.839 1.839 0 0 1 2.743-1.136c1.647 1.003 3.53-.881 2.528-2.528a1.839 1.839 0 0 1 1.136-2.744c1.874-.454 1.874-3.119 0-3.574a1.839 1.839 0 0 1-1.136-2.744c1.003-1.646-.881-3.53-2.528-2.527a1.839 1.839 0 0 1-2.744-1.136Zm-1.788 11.794a3.6 3.6 0 1 0 0-7.2 3.6 3.6 0 0 0 0 7.2Z"
+      clipRule="evenodd"
+    />
+  </Svg>
+);

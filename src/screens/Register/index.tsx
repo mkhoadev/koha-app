@@ -15,13 +15,15 @@ import {
   GoogleIcon,
   LeftArrowWhiteIcon,
   PasswordOutlineIcon,
+  UserOutlineIcon,
 } from "../../../assets/svgs/login";
 import { useNavigation } from "@react-navigation/native";
 
-function LoginScreen() {
+function RegisterScreen() {
   const navigation = useNavigation();
   const { width, height } = useWindowDimensions();
   const [focusInput, setFocusInput] = useState({
+    username: false,
     email: false,
     password: false,
   });
@@ -30,20 +32,45 @@ function LoginScreen() {
     <View style={[styles.container, { width, height }]}>
       <SafeAreaView>
         <View style={styles.title}>
-          <TouchableOpacity style={{ position: "absolute", left: 0 }}>
+          <TouchableOpacity
+            style={{ position: "absolute", left: 0 }}
+            onPress={() => navigation.goBack()}
+          >
             <LeftArrowWhiteIcon />
           </TouchableOpacity>
-          <Text style={styles.textTitle}>Sign In</Text>
+          <Text style={styles.textTitle}>Create an Account</Text>
         </View>
 
         <View style={[styles.fieldItem, { width: width - 48 }]}>
-          <Text style={styles.textField}>Email Address</Text>
+          <Text style={styles.textField}>Username</Text>
+          <View
+            style={[
+              styles.inputField,
+              { borderColor: focusInput.username ? "#8FFF00" : "#929292" },
+            ]}
+          >
+            <UserOutlineIcon color={focusInput.username ? "#FFFFFF" : "#64748B"} />
+            <TextInput
+              placeholder="Enter your username"
+              placeholderTextColor="#94A3B8"
+              style={[
+                styles.input,
+                { width: width - 114, color: focusInput.username ? "#FFFFFF" : "#94A3B8" },
+              ]}
+              onFocus={() => setFocusInput((cur) => ({ ...cur, username: true }))}
+              onBlur={() => setFocusInput((cur) => ({ ...cur, username: false }))}
+            />
+          </View>
+        </View>
+
+        <View style={[styles.fieldItem, { width: width - 48 }]}>
+          <Text style={styles.textField}>Password</Text>
           <View
             style={[styles.inputField, { borderColor: focusInput.email ? "#8FFF00" : "#929292" }]}
           >
             <EmailOutlineIcon color={focusInput.email ? "#FFFFFF" : "#64748B"} />
             <TextInput
-              placeholder="Enter your email"
+              placeholder="Enter your password"
               placeholderTextColor="#94A3B8"
               style={[
                 styles.input,
@@ -56,7 +83,7 @@ function LoginScreen() {
         </View>
 
         <View style={[styles.fieldItem, { width: width - 48 }]}>
-          <Text style={styles.textField}>Password</Text>
+          <Text style={styles.textField}>Confirm Password</Text>
           <View
             style={[
               styles.inputField,
@@ -65,7 +92,7 @@ function LoginScreen() {
           >
             <PasswordOutlineIcon color={focusInput.password ? "#FFFFFF" : "#64748B"} />
             <TextInput
-              placeholder="Enter your password"
+              placeholder="Enter confirm password"
               placeholderTextColor="#94A3B8"
               style={[
                 styles.input,
@@ -80,14 +107,9 @@ function LoginScreen() {
             </TouchableOpacity>
           </View>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate("ForgotPassword")}>
-          <Text style={{ fontSize: 14, fontWeight: "700", color: "#8FFF00", marginBottom: 24 }}>
-            Forgot Password?
-          </Text>
-        </TouchableOpacity>
         <TouchableOpacity>
           <View style={styles.button}>
-            <Text style={styles.textButton}>Sign In</Text>
+            <Text style={styles.textButton}>Continue</Text>
           </View>
         </TouchableOpacity>
 
@@ -148,9 +170,9 @@ function LoginScreen() {
         >
           Don’t have an account?{" "}
         </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text style={{ fontSize: 14, color: "#8FFF00", textAlign: "center", fontWeight: "700" }}>
-            Sign Up
+            Sign In
           </Text>
         </TouchableOpacity>
       </View>
@@ -158,7 +180,7 @@ function LoginScreen() {
   );
 }
 
-export default LoginScreen;
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
