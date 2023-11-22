@@ -30,7 +30,10 @@ function LoginScreen() {
     <View style={[styles.container, { width, height }]}>
       <SafeAreaView>
         <View style={styles.title}>
-          <TouchableOpacity style={{ position: "absolute", left: 0 }}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("User")}
+            style={{ position: "absolute", left: 0 }}
+          >
             <LeftArrowWhiteIcon />
           </TouchableOpacity>
           <Text style={styles.textTitle}>Sign In</Text>
