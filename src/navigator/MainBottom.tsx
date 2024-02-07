@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import { HeathIcon, HomeIcon, PlusMenuIcon, StatisticIcon, UserIcon } from "../../assets/svgs/icon";
 import CreateScreen from "../screens/Create";
 import HeathScreen from "../screens/Heath";
@@ -100,8 +100,8 @@ const screenOptionsStack = {
 
 const styles = StyleSheet.create({
   navigation: {
-    height: 85,
-    paddingTop: 20,
+    height: Platform.OS === "ios" ? 85 : 70,
+    paddingTop: Platform.OS === "ios" ? 20 : 0,
     backgroundColor: "#000000",
     borderTopWidth: 3.5,
     borderTopColor: "#222222",

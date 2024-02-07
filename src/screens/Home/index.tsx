@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Image,
+  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -34,6 +35,7 @@ function HomeScreen() {
             justifyContent: "space-between",
             alignItems: "center",
             marginBottom: 20,
+            marginTop: Platform.OS === "android" ? 20 : 0,
           }}
         >
           <View style={styles.currency}>
